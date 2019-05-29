@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
+gem 'turbolinks'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
