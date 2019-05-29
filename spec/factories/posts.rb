@@ -1,12 +1,16 @@
 FactoryBot.define do
   factory :post do
-    remote_id { 1 }
+    sequence :remote_id do |n|
+      n
+    end
     title { "MyString" }
     description { "MyString" }
     collection_notes { "MyString" }
-    status { 1 }
-    expires_at { "2019-05-29 11:21:16" }
+    status { "active" }
+    listed_at { 1.day.ago}
+    expires_at { 1.week.since }
     remote_like_count { 1 }
-    image_url { "MyString" }
+    image_url { "https://sampleimage.com/my.jpg" }
+    user
   end
 end

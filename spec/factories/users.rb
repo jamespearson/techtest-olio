@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :user do
-    remote_id { 1 }
+    sequence :remote_id do |n|
+      n
+    end
     first_name { "MyString" }
-    avatar_url { "MyString" }
+    image_url { "https://sampleimage.com/my.jpg" }
   end
 end
