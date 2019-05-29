@@ -15,6 +15,11 @@ RSpec.describe Post, type: :model do
     should validate_presence_of(:expires_at)
   end
 
+  it "should have a listed_at date" do
+    should validate_presence_of(:listed_at)
+  end
+  
+
   it "should require a title" do
     should validate_presence_of(:title)
   end
