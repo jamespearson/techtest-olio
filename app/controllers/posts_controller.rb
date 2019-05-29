@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     
     PostsImportJob.perform_now unless Rails.env.test?
 
-    @posts = Post.active.order(listed_at: :desc)
+    @posts = Post.active.includes(:user).order(listed_at: :desc)
   end
 
   def show
