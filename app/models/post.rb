@@ -22,4 +22,8 @@ class Post < ApplicationRecord
 
     has_many :likes, dependent: :destroy
 
+    def total_likes
+        likes_count + remote_like_count
+    end
+    
 end

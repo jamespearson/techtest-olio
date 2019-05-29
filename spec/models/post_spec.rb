@@ -34,6 +34,16 @@ RSpec.describe Post, type: :model do
       }.to change{Like.where(post_id: @post.id).count}.from(1).to(0)
 
     end
+
+    it "should provide a sum of local and remote likes" do
+      should respond_to?(:total_likes)
+
+      @post = create(:post, remote_like_count: 99)
+    
+      expect{
+        @like = create(:like, post: @post)  
+      }.to change{Post.find(@post.id).total_likes}.from(99).to(100)
+    end
   end
 
 
