@@ -3,7 +3,11 @@ require 'open-uri'
 class PostsImportJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  # Fetchs the data from the server then ...
+  #   1. Creates users from that data
+  #   2. Creates posts using the data and previously created users.
+  #
+  def perform
     
     url = "https://s3-eu-west-1.amazonaws.com/olio-staging-images/developer/test-articles.json"
 
@@ -41,7 +45,9 @@ class PostsImportJob < ApplicationJob
       post.image_url = p["photos"][0]["files"]["large"]
       post.user = User.find_by_remote_id(p["user"]["id"])
       post.expires_at = p["expiry"]
+      post.listed_at = p["created_at"]
       post.remote_like_count = p["reactions"]["likes"]
+      post.status = p["status"]
 
       # TODO: What is a save fails, log to bugsnag?
       post.save

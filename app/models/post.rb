@@ -3,6 +3,11 @@ class Post < ApplicationRecord
     include RemoteId
     include ImageUrl
     
+    enum status: {
+         active: 0,
+         deleted: -1
+    }
+
     validates   :description,   presence: true
 
     validates   :expires_at,    presence: true
