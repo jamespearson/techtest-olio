@@ -15,6 +15,28 @@ RSpec.describe Post, type: :model do
     should validate_presence_of(:expires_at)
   end
 
+  context "likes" do
+
+    it "should have many likes" do
+      should have_many :likes
+    end
+
+    it "should cache the like count" do
+      should respond_to?(:likes_count)
+    end
+
+    it "should delete the likes if the post is deleted" do
+      @like = create(:like)
+      @post = @like.post
+
+      expect{
+        @post.destroy
+      }.to change{Like.where(post_id: @post.id).count}.from(1).to(0)
+
+    end
+  end
+
+
   it "should have a listed_at date" do
     should validate_presence_of(:listed_at)
   end
