@@ -1,6 +1,9 @@
 require 'rails_helper'
+require Rails.root.join("spec/concerns/remote_id.rb")
 
 RSpec.describe Post, type: :model do
+  
+  it_behaves_like "has_remote_id"
   
   it "should require a description" do
     should validate_presence_of(:description)
@@ -26,17 +29,6 @@ RSpec.describe Post, type: :model do
 
   end
 
-  context "it's remote id" do
-
-    it("should be required") do
-      should validate_presence_of(:remote_id)
-    end
-
-    it("should be unique") do
-      should validate_uniqueness_of(:remote_id)
-    end
-
-  end
 
   it "should require a title" do
     should validate_presence_of(:title)
