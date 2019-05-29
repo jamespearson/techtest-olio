@@ -27,4 +27,8 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
+group :test do
+  gem 'webmock'
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
