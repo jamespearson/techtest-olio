@@ -7,9 +7,10 @@ class Post < ApplicationRecord
 
     validates   :expires_at,    presence: true
 
-  
-
     validates   :title,         presence: true
     
-    
+    validates   :user,          presence: true
+
+    belongs_to :user
+
 end

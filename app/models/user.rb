@@ -4,5 +4,7 @@ class User < ApplicationRecord
     include ImageUrl
     
     validates   :first_name,    presence: true
+
+    has_many :posts
     
 end

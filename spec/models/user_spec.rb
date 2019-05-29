@@ -11,4 +11,9 @@ RSpec.describe User, type: :model do
     should validate_presence_of(:first_name)
   end
 
+  it "should have many posts" do
+    should have_many(:posts)
+  end
+  
+
 end

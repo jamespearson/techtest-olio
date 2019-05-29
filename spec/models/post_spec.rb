@@ -6,7 +6,7 @@ RSpec.describe Post, type: :model do
   
   it_behaves_like "has_image_url"
   it_behaves_like "has_remote_id"
-  
+
   it "should require a description" do
     should validate_presence_of(:description)
   end
@@ -17,6 +17,14 @@ RSpec.describe Post, type: :model do
 
   it "should require a title" do
     should validate_presence_of(:title)
+  end
+
+  it "should belong to a user" do
+    should belong_to(:user)
+  end
+
+  it "should require a user" do
+    should validate_presence_of(:user)
   end
 
 end
