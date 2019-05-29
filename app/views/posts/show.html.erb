@@ -1,0 +1,13 @@
+<article>
+
+    <header>
+        <h1><%=@post.title%></h1>
+        <p>Offered by: <%=@post.user.first_name%>, <%=time_ago_in_words(@post.listed_at)%> ago. Expires in <%=time_ago_in_words(@post.expires_at)%></p>
+    </header>
+
+    <div>
+        <p><%=@post.description%></p>
+        <%=image_tag  @post.image_url %>
+    </div>
+
+</article>
