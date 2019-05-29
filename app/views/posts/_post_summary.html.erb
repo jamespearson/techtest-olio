@@ -1,20 +1,28 @@
 <article class="post-summary">
-    <div>
+
+    <div class="image-container">
+        <%=link_to image_tag(post_summary.image_url), post_path(post_summary) %>
+    </div>
+
+
+    <div class="content-container">
         <h3><%=link_to post_summary.title, post_path(post_summary) %></h3>
         <p>Offered by: <%=post_summary.user.first_name%>, <%=time_ago_in_words(post_summary.listed_at)%> ago. Expires in <%=time_ago_in_words(post_summary.expires_at)%></p>
     </div>
     
-    <div>
-        <%=link_to image_tag(post_summary.image_url), post_path(post_summary) %>
-    </div>
 
-    <div>
-    
-        <% if liked_posts.include?(post_summary.id.to_s) %>
-            <%= link_to "Unlike", post_likes_path(post_summary),  method: :delete %>
-        <% else %>
-            <%= link_to "Like", "/posts/#{post_summary.id}/likes",  method: :post %>
-        <% end %>
-        <%=post_summary.total_likes%>
+    <div class="like-container">
+
+        <div class="like-count">        
+            <span><%=post_summary.total_likes%></span> likes
+        </div>
+
+        <div class="button">
+            <% if liked_posts.include?(post_summary.id.to_s) %>
+                <%= link_to "Unlike", post_likes_path(post_summary),  method: :delete %>
+            <% else %>
+                <%= link_to "Like", "/posts/#{post_summary.id}/likes",  method: :post %>
+            <% end %>
+        </div>
     </div>
 </article>

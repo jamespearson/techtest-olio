@@ -3,10 +3,96 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .post-summary {
+    border-bottom: 1px solid #CCC;
+    display: flex;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
 
-    img {
-        object-fit: cover;
-        height: 50px;
-        width: 50px;
+
+
+    .image-container{        
+        width: 120px;
+
+        img {
+            object-fit: cover;
+            height: 100px;
+            width: 100px;
+        }
+    
+    }
+
+    .content-container {
+        flex: 1;
+
+        h3{
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+
+        p{
+            font-size: 1.4rem;
+            margin: 0;
+            padding:0;
+        }
+    }
+
+    .like-container{
+        display: flex;
+        flex-direction: column;
+
+        .like-count{
+            flex: 1;
+            font-size: 1.4rem;
+            text-align: center;
+            width: 50px;
+
+            span{ 
+                display: block;
+                font-size: 4rem
+            }
+        }
+
+        .button{
+            border-radius: 2px;
+            background-color: #CCC;
+            text-align: center;
+
+            > a {
+                display: block;
+                padding: 5px;
+                color: white;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.post-detail {
+
+    > header {
+
+        h1{
+            border-bottom: 3px solid black;
+            font-size: 3rem;
+            line-height: 6rem;
+        }
+
+        p{
+            font-size: 1.2rem;
+            margin: 0;
+            padding:0;
+        }
+    }
+
+    > div {
+        font-size: 1.4rem;
+        padding: 20px 0;
+
+        img {
+            max-width: 100%;
+        }
     }
 }
