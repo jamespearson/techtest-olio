@@ -62,6 +62,19 @@ RSpec.configure do |config|
 
   # Include factory bot methods as standard
   config.include FactoryBot::Syntax::Methods
+
+
+  # Clean the database between test runs.
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
 
 # Intergrate should matchers with RSpec
