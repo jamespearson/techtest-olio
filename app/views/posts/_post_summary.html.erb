@@ -1,3 +1,4 @@
+
 <article class="post-summary">
 
     <div class="image-container">
@@ -18,7 +19,7 @@
         </div>
 
         <div class="button">
-            <% if liked_posts.include?(post_summary.id.to_s) %>
+            <% if liked_posts.present? && liked_posts.include?(post_summary.id.to_s) %>
                 <%= link_to "Unlike", post_likes_path(post_summary),  method: :delete %>
             <% else %>
                 <%= link_to "Like", "/posts/#{post_summary.id}/likes",  method: :post %>

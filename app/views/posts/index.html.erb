@@ -1,5 +1,5 @@
 <h1>Posts</h1>
 
 <section class="post-list">
-    <%= render partial: "post_summary", collection: @posts, locals: {liked_posts: cookies[:likes].split("&")} %>
+    <%= render partial: "post_summary", collection: @posts, locals: {liked_posts: cookies[:likes]&.split("&")} %>
 </section>
